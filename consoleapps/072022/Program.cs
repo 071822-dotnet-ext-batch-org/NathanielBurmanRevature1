@@ -6,7 +6,7 @@ namespace pRun
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Multiverse!");
+            Console.WriteLine("Goodbye Multiverse!");
         }
     }
 }
