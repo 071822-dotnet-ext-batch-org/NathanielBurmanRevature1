@@ -19,6 +19,18 @@ namespace rpsconsole1
             return sMsg;
         }
         
+        public static void play(){
+            int myint = 1+3;
+            Console.WriteLine(Math.Pow(100,2));
+            Console.WriteLine(100*2);
+            Console.WriteLine($"the mod is      => {100%6}");
+            Console.WriteLine($"the division is => {101/10}");
+
+            Console.WriteLine($"myint++ => {myint++}"); // hit var then inc
+            Console.WriteLine($"myint   => {myint}"); // prints the increased var
+            Console.WriteLine($"myint++ => {++myint}"); // inc var then print
+        }
+
         static void Main(string[] args)
         {
             // write a string
@@ -34,10 +46,7 @@ namespace rpsconsole1
             // write an integer
             Console.WriteLine(43);
 
-            int test;
-            int test2;
-            test = 11111111;
-            test = 11110233123000000;
+            play();
 
         }
 
