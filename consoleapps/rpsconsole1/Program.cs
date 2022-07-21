@@ -92,8 +92,30 @@ namespace rpsconsole1
 
             // iterate over each index
             for(int i=0; i<s.Length; i++){
-                Console.WriteLine($"c => {s[i]}");
+                //Console.WriteLine($"c => {s[i]}");
+                Console.Write($"{s[i]}");
             }
+            Console.WriteLine();
+
+            foreach(char thisChar in s){
+                Console.Write($".{thisChar}");
+            }
+            Console.WriteLine();
+
+            int wloop = 0;
+            while(wloop<10){
+                Console.WriteLine($"hello");
+                wloop++;
+            }
+            Console.WriteLine();
+
+            do
+            {
+                Console.WriteLine($"hello");
+                wloop--;
+            } while(wloop>0);
+
+
         }
 
         static void Main(string[] args)
