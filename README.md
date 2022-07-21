@@ -1,2 +1,2 @@
 # NathanielBurmanRevature1
-this is a test
+This is a repo of Revature work.
