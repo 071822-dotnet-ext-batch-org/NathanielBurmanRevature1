@@ -30,7 +30,7 @@ namespace rpsconsole1
             Console.WriteLine($"myint   => {myint}"); // prints the increased var
             Console.WriteLine($"myint++ => {++myint}"); // inc var then print
 
-            int a,b,c,x,y,z;
+            int a,b,c,x,y;
             a = 700;
             b = a;
             c = b++;
@@ -62,28 +62,38 @@ namespace rpsconsole1
                 Console.WriteLine("x is greater than y");
             }
 
-
-            // a string is a character array
-            char[] myCharArr = new char[]{'f','2','d'};
             string s = "string literal";
             char l = s[s.Length - 1];
-            Console.WriteLine($"s => {myCharArr[0]}");
+            Console.WriteLine($"s => {l}");
         }
 
         static void tryCatch(){
             int c = 10;
             char[] myCharArr = new char[]{'f','2','d'};
-            try{
+            try
+            {
                 Console.WriteLine($"s => {myCharArr[3]}"); // this will cause exception
                 Console.WriteLine($"c => {++c}"); // this will not output
             }
-            catch(IndexOutOfRangeException ex){
-                Console.WriteLine($"The outofrange exception occured. {ex.Message}");
+            catch(IndexOutOfRangeException ex)
+            {
+                Console.WriteLine($"The out of range exception occured. {ex.Message}");
             }
-            catch(Exception ex){
-                Console.WriteLine($"The outofrange exception occured. {ex.Message}");
+            catch(Exception ex)
+            {
+                Console.WriteLine($"The out of range exception occured. {ex.Message}");
             }
             Console.WriteLine($"c => {c}"); // this will output
+        }
+
+        static void doLoops(){
+            string s = "string literal";
+            char l = s[s.Length - 1];
+
+            // iterate over each index
+            for(int i=0; i<s.Length; i++){
+                Console.WriteLine($"c => {s[i]}");
+            }
         }
 
         static void Main(string[] args)
@@ -103,6 +113,7 @@ namespace rpsconsole1
 
             play();
             tryCatch();
+            doLoops();
         }
 
         
