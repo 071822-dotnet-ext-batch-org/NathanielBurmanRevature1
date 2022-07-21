@@ -29,6 +29,61 @@ namespace rpsconsole1
             Console.WriteLine($"myint++ => {myint++}"); // hit var then inc
             Console.WriteLine($"myint   => {myint}"); // prints the increased var
             Console.WriteLine($"myint++ => {++myint}"); // inc var then print
+
+            int a,b,c,x,y,z;
+            a = 700;
+            b = a;
+            c = b++;
+            //b = a + b * c;
+
+
+            c = a >= 100 ? b : c / 10; // this is a ternerary operator
+            Console.WriteLine($"c => {c}");
+            if(a>= 100){ // this is the same as above
+                c = b;
+            }
+            else{
+                c = c / 10;
+            }
+            Console.WriteLine($"c => {c}");
+
+
+            x = 5;
+            y = 6;
+            //z = 7;
+
+            if( y > x ){
+                Console.WriteLine("y is greater than x");
+            }
+            else if(y == x){
+                Console.WriteLine("x is equal to y");
+            }
+            else{
+                Console.WriteLine("x is greater than y");
+            }
+
+
+            // a string is a character array
+            char[] myCharArr = new char[]{'f','2','d'};
+            string s = "string literal";
+            char l = s[s.Length - 1];
+            Console.WriteLine($"s => {myCharArr[0]}");
+        }
+
+        static void tryCatch(){
+            int c = 10;
+            char[] myCharArr = new char[]{'f','2','d'};
+            try{
+                Console.WriteLine($"s => {myCharArr[3]}"); // this will cause exception
+                Console.WriteLine($"c => {++c}"); // this will not output
+            }
+            catch(IndexOutOfRangeException ex){
+                Console.WriteLine($"The outofrange exception occured. {ex.Message}");
+            }
+            catch(Exception ex){
+                Console.WriteLine($"The outofrange exception occured. {ex.Message}");
+            }
+            Console.WriteLine($"c => {c}"); // this will output
         }
 
         static void Main(string[] args)
@@ -47,7 +102,7 @@ namespace rpsconsole1
             Console.WriteLine(43);
 
             play();
-
+            tryCatch();
         }
 
         
