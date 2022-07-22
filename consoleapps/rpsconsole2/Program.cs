@@ -6,12 +6,12 @@ namespace rpsconsole2
     {
         static void Main(string[] args)
         {
-            string player1Name, player2Name, sMsgStartGame, sMsgWin, sMsgLost;
-            string sMsgHowToPlay, sMsgEndGame, sMsgTie;
-            string sMsgInputName, sMsgThis, sHandName;
-            int iLost, iWins, iTies, player1Hand, player2Hand, iPlayAgain;
+            string sPlayer1Name, player2Name, sMsgStartGame, sMsgWin, sMsgLost;
+            string sMsgHowToPlay, sMsgEndGame, sMsgTie, sAction;
+            string sMsgInputName, sMsgThis, sHandName, sHand1, sHand2;
+            int iLost, iWins, iTies, player1Hand, player1HandParsed, player2Hand, iPlayAgain;
             int rock, paper, scissors;
-
+            bool bPlayer1HandChecked;
             Random rnd = new Random();
 
             sMsgStartGame = "\t\tWelcome to the RPS game!\nThis is Rock Paper Scissors!";
@@ -20,24 +20,28 @@ namespace rpsconsole2
             sMsgLost      = "You Lose!";
             sMsgThis      = "temp var";
             sMsgEndGame   = "Press 1 to play again or 0 to quit:";
-            sMsgHowToPlay = "\nReady? Press the number for 1 Rock, 2 Paper, or 3 Scissors.\n";
+            sMsgHowToPlay = "\nReady? Press the number:\n1 Rock \n2 Paper \n3 Scissors.\n";
             sMsgInputName = "What is your name?";
+            sAction       = "beats, looses too, ties";// i assign this action for the end message
 
-            player1Name    = "Player One"; // the user
+            sPlayer1Name    = "Player One"; // the user
             player2Name    = "Computer"; // the computer
 
             iWins = 0; // tally the wins
             iLost = 0; // looses
             iTies = 0; // ties
 
+            sHand1   = "";// a temp var used to display the word instead of number for the hand
+            sHand2   = "";// a temp var used to display the word instead of number for the hand
             rock    = 1;
             paper   = 2;
             scissors= 3;
 
             player1Hand = 0; // players choice will be 1,2,3
+            player1HandParsed = 0;
             player2Hand = 0; // players choice
 
-            sHandName = "";
+            //sHandName = "";
 
             iPlayAgain = 1; // a flag to track if we play again
 
@@ -52,7 +56,7 @@ namespace rpsconsole2
             // ReadLine returns a string
             // set the player name to their input
             Console.WriteLine(sMsgInputName);
-            player1Name = Console.ReadLine();
+            sPlayer1Name = Console.ReadLine();
 
         while(iPlayAgain==1)
         {
@@ -63,8 +67,11 @@ namespace rpsconsole2
             //Console.Read();
 
             // take player input for player move
-            Console.WriteLine($"{player1Name}, what is your choice.");
+            Console.WriteLine($"{sPlayer1Name}, what is your choice.");
             player1Hand = int.Parse(Console.ReadLine());
+            //bPlayer1HandChecked = int.TryParse(Console.ReadLine(), out player1HandParsed);
+            //if(bPlayer1HandChecked==true){player1Hand = player1HandParsed;}
+            
             
             // computer returns their result
             player2Hand = rnd.Next(1, 3);
@@ -76,27 +83,65 @@ namespace rpsconsole2
             if(player1Hand == player2Hand){
                 iTies++; // inc ties var
                 sMsgThis = sMsgTie;
+                sAction = "ties";
             }else{
                 if(player1Hand == rock && player2Hand == scissors){
                     iWins++;
                     sMsgThis = sMsgWin + " - rock beats scissors";
+                    sHand1="rock";
+                    sHand2="scissors";
+                    sAction = "beats";
                 }
                 else if(player1Hand == paper && player2Hand == rock){
                     iWins++;
                     sMsgThis = sMsgWin + " - paper beats rock";
+                    sHand1="paper";
+                    sHand2="rock";
+                    sAction = "beats";
                 }
                 else if(player1Hand == scissors && player2Hand == paper){
                     iWins++;
                     sMsgThis = sMsgWin + " - scissors beats paper";
+                    sHand1="scissors";
+                    sHand2="paper";
+                    sAction = "beats";
                 }
                 else{
                     iLost++;
                     sMsgThis = sMsgLost;
+                    sAction = "looses against";
                 }
             }
             
+            // determine the player1's hand name
+            if(player1Hand==rock){
+                sHand1="rock";
+            }
+            else if(player1Hand==paper){
+                sHand1="paper";
+            }
+            else{
+                sHand1="scissors";
+            }
+
+            if(player1Hand!=rock && player1Hand!=paper && player1Hand!=scissors )
+            {
+                sHand1="nothing choosen";
+            }
+
+            // determine the player2's hand name
+            if(player2Hand==rock){
+                sHand2="rock";
+            }
+            else if(player2Hand==paper){
+                sHand2="paper";
+            }
+            else{
+                sHand2="scissors";
+            }
+
             // results displayed 
-            Console.WriteLine($"{player1Name}, {sMsgThis}\nPlayer One: {player1Hand}\nPlayer Two: {player2Hand}\nCurrent Tally: Wins:{iWins} Ties:{iTies} Lost:{iLost}");
+            Console.WriteLine($"\n{sPlayer1Name}, {sMsgThis}\nPlayer One: {player1Hand} : {sHand1}\n{sAction} \nPlayer Two: {player2Hand} : {sHand2}\nCurrent Tally: Wins:{iWins} Ties:{iTies} Lost:{iLost}");
 
             Console.WriteLine(sMsgEndGame);
             iPlayAgain = int.Parse(Console.ReadLine());
