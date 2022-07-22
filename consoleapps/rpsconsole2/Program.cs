@@ -84,6 +84,15 @@ namespace rpsconsole2
                 iTies++; // inc ties var
                 sMsgThis = sMsgTie;
                 sAction = "ties";
+                
+                // LOOP BACK ARROUND IF THERE WAS A TIE
+                // tell them they tied
+                Console.WriteLine(sMsgTie);
+                continue;
+                //break;
+                //
+                //
+
             }else{
                 if(player1Hand == rock && player2Hand == scissors){
                     iWins++;
