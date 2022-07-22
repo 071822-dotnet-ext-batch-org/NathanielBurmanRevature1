@@ -68,9 +68,9 @@ namespace rpsconsole2
 
             // take player input for player move
             Console.WriteLine($"{sPlayer1Name}, what is your choice.");
-            player1Hand = int.Parse(Console.ReadLine());
-            //bPlayer1HandChecked = int.TryParse(Console.ReadLine(), out player1HandParsed);
-            //if(bPlayer1HandChecked==true){player1Hand = player1HandParsed;}
+            //player1Hand = int.Parse(Console.ReadLine());
+            bPlayer1HandChecked = int.TryParse(Console.ReadLine(), out player1HandParsed);
+            if(bPlayer1HandChecked==true){player1Hand = player1HandParsed;}
             
             
             // computer returns their result
@@ -132,7 +132,8 @@ namespace rpsconsole2
             else{
                 sHand1="scissors";
             }
-
+            
+            // a message for when the user diddnt choose a selection
             if(player1Hand!=rock && player1Hand!=paper && player1Hand!=scissors )
             {
                 sHand1="nothing choosen";
@@ -152,6 +153,7 @@ namespace rpsconsole2
             // results displayed 
             Console.WriteLine($"\n{sPlayer1Name}, {sMsgThis}\nPlayer One: {player1Hand} : {sHand1}\n{sAction} \nPlayer Two: {player2Hand} : {sHand2}\nCurrent Tally: Wins:{iWins} Ties:{iTies} Lost:{iLost}");
 
+            // does the user want to play again?
             Console.WriteLine(sMsgEndGame);
             iPlayAgain = int.Parse(Console.ReadLine());
         }
