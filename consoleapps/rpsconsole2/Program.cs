@@ -7,22 +7,28 @@ namespace rpsconsole2
         static void Main(string[] args)
         {
             string sPlayer1Name, player2Name, sMsgStartGame, sMsgWin, sMsgLost;
-            string sMsgHowToPlay, sMsgEndGame, sMsgTie, sAction;
-            string sMsgInputName, sMsgThis, sHandName, sHand1, sHand2;
+            string sMsgHowToPlay, sMsgEndGame, sMsgTie, sAction, sMsgBestOfThree;
+            string sMsgInputName, sMsgThis, sHandName, sHand1, sHand2, sMsg2of3Win, sMsg2of3Lost;
             int iLost, iWins, iTies, player1Hand, player1HandParsed, player2Hand, iPlayAgain;
             int rock, paper, scissors;
-            bool bPlayer1HandChecked;
+            bool bPlayer1HandChecked,bBestOutOfThree;
             Random rnd = new Random();
 
+            //flag
+            bBestOutOfThree = true; // sets the game to best two out of three
+
             sMsgStartGame = "\t\tWelcome to the RPS game!\nThis is Rock Paper Scissors!";
-            sMsgWin       = "You Win!";
-            sMsgTie       = "You Tied!";
-            sMsgLost      = "You Lose!";
+            sMsgWin       = "You Win this Round!";
+            sMsgTie       = "You Tied this Round!";
+            sMsgLost      = "You Lose this Round!";
+            sMsg2of3Win   = "";
+            sMsg2of3Lost  = "";
             sMsgThis      = "temp var";
             sMsgEndGame   = "Press 1 to play again or 0 to quit:";
             sMsgHowToPlay = "\nReady? Press the number:\n1 Rock \n2 Paper \n3 Scissors.\n";
             sMsgInputName = "What is your name?";
             sAction       = "beats, looses too, ties";// i assign this action for the end message
+            sMsgBestOfThree="The best out of three wins!";
 
             sPlayer1Name    = "Player One"; // the user
             player2Name    = "Computer"; // the computer
@@ -58,8 +64,10 @@ namespace rpsconsole2
             Console.WriteLine(sMsgInputName);
             sPlayer1Name = Console.ReadLine();
 
+
         while(iPlayAgain==1)
         {
+            
             // instructions to play... explain game flow. which keys are used, etc.
             Console.WriteLine(sMsgHowToPlay);
 
@@ -71,7 +79,12 @@ namespace rpsconsole2
             //player1Hand = int.Parse(Console.ReadLine());
             bPlayer1HandChecked = int.TryParse(Console.ReadLine(), out player1HandParsed);
             if(bPlayer1HandChecked==true){player1Hand = player1HandParsed;}
-            
+            // nb! check on the exceptions here
+            //
+
+
+
+
             
             // computer returns their result
             player2Hand = rnd.Next(1, 3);
@@ -122,6 +135,7 @@ namespace rpsconsole2
                 }
             }
             
+            //
             // determine the player1's hand name
             if(player1Hand==rock){
                 sHand1="rock";
@@ -149,9 +163,28 @@ namespace rpsconsole2
             else{
                 sHand2="scissors";
             }
+            //
+            //
 
-            // results displayed 
+            // results displayed
             Console.WriteLine($"\n{sPlayer1Name}, {sMsgThis}\nPlayer One: {player1Hand} : {sHand1}\n{sAction} \nPlayer Two: {player2Hand} : {sHand2}\nCurrent Tally: Wins:{iWins} Ties:{iTies} Lost:{iLost}");
+
+            // check if best two out of three
+            // displays message to user on win or lose
+            if((iWins>=2) || (iLost >=2) && (bBestOutOfThree)){
+                // instructions to play... explain game flow. which keys are used, etc.
+                Console.WriteLine($"\n{sMsgBestOfThree}\n");
+                if (iWins>=2){
+                    Console.WriteLine($"\n{sMsg2of3Win}\n");
+                }
+                else{
+                    Console.WriteLine($"\n{sMsg2of3Lost}}\n");
+                }
+                // reset values to cycle on best of 2 out of three
+                iWins=0;
+                iLost=0;
+                continue;
+            }
 
             // does the user want to play again?
             Console.WriteLine(sMsgEndGame);
