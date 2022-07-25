@@ -6,32 +6,84 @@ namespace StringManipulationChallenge
     {
         static void Main(string[] args)
         {
+            //flags
+            bool bUpper = false;
+            bool bLower = false;
+            bool bConcat= false;
+            bool bSub   = true;
+            bool bTrim  = false;
+            bool bSearchChar = false;
+
             /*
             *
             * implement the required code here and within the methods below.
             *
             */
             //when you call a method, you call it with arguments. The args values are held in a variable.
+            
             Console.WriteLine("Input a string:");
             string sString = Console.ReadLine(); // read line
+
+            if(bUpper)
+            {
             string sUpper  = StringToUpper(sString); // pass var to method
             Console.WriteLine($"upper: {sUpper}");
+            }
 
+            if(bLower)
+            {
             //sString = Console.ReadLine(); // read line
             string sLower  = StringToLower(sString); // pass var to method
             Console.WriteLine($"lower: {sLower}");
+            }
 
+            if(bTrim)
+            {
             //Console.WriteLine("Input a string with spaces:");
             //sString = Console.ReadLine(); // read line
             string sTrim  = StringTrim(sString); // pass var to method
             Console.WriteLine($"trim: {sTrim}");
+            }
 
+            if(bSub)
+            {
+            // substring
+            Console.WriteLine("SubString: Input a string: ");
+            sString     = Console.ReadLine(); // read line
+
+            Console.WriteLine("Char number (input a int):");
+            string sParse = Console.ReadLine();
+            int iIndex  = Int32.Parse(sParse); // read line
+            Console.WriteLine(iIndex);
+            int iLength = sString.Length;
+            iLength = iLength - iIndex;
+            Console.WriteLine(iLength);
+            string sValue      = StringSubstring(sString, iIndex, iLength);
+            Console.WriteLine($"StringSubstring: {sValue}");
+            }
+
+            if(bSearchChar)
+            {
+            // SearchChar
+            Console.WriteLine("Search Char: Input a string: ");
+            sString     = Console.ReadLine(); // read line
+            Console.WriteLine("Char you want to know index of:");
+            char cChar = Console.ReadLine()[0]; // read line
+            //char cChar = sChar[0];
+            int iValue      = SearchChar(sString, cChar);
+            Console.WriteLine($"SearchChar: {iValue}");
+            }
+
+            if(bConcat)
+            {
+            // concatenate
             Console.WriteLine("first name:");
             string sFName = Console.ReadLine(); // read line
             Console.WriteLine("last name:");
             string sLName = Console.ReadLine(); // read line
             string sValue = ConcatNames(sFName, sLName);
             Console.WriteLine($"Concat: {sValue}");
+            }
         }
 
         /// <summary>
@@ -86,7 +138,9 @@ namespace StringManipulationChallenge
         /// <returns></returns>
         public static string StringSubstring(string x, int firstElement, int lengthOfSubsring)
         {
-            throw new NotImplementedException("StringSubstring method not implemented.");
+            //throw new NotImplementedException("StringSubstring method not implemented.");
+            string sValue = x.Substring(firstElement,lengthOfSubsring);
+            return sValue;
         }
 
         /// <summary>
@@ -101,7 +155,10 @@ namespace StringManipulationChallenge
         /// <returns></returns>
         public static int SearchChar(string userInputString, char charUserWants)
         {
-            throw new NotImplementedException("SearchChar method not implemented.");
+            //throw new NotImplementedException("SearchChar method not implemented.");
+            //throw new NotImplementedException("StringSubstring method not implemented.");
+            int iValue = userInputString.IndexOf(charUserWants);;
+            return iValue;
         }
 
         /// <summary>
@@ -117,6 +174,7 @@ namespace StringManipulationChallenge
         public static string ConcatNames(string fName, string lName)
         {
             //throw new NotImplementedException("ConcatNames method not implemented.");
+            //string sValue = ($"{fName} {lName}");
             string sValue = (fName + " " + lName);
             return sValue;
         }
