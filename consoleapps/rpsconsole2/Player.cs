@@ -18,7 +18,7 @@ namespace rpsconsole2
         }
         
         //A property is a c# abstraction and combination of Getters and Setters and the data
-        public DateTime myDob { get; set; } = new DateTime(1991,7,24);
+        public DateTime myDob { get; set; } = new DateTime(1983,7,24);
         public string sFName { get; set; }
         public string sLName { get; set; }
         public bool Gender { get; set; } // true is = female, false = male
