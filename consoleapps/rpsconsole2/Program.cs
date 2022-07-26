@@ -109,7 +109,7 @@ namespace rpsconsole2
             Console.WriteLine("...");
 
             // display a welcome message to the screen
-            Console.WriteLine(sMsgStartGame);
+            Console.WriteLine(game.sMsgStartGame);
 
             // ReadLine returns a string
             // set the player name to their input
@@ -130,10 +130,10 @@ namespace rpsconsole2
             // take player input for player move
             Console.WriteLine($"{p1.sFName}, what is your choice.");
             //player1Hand = int.Parse(Console.ReadLine());
-            bPlayer1HandChecked = int.TryParse(Console.ReadLine(), out player1HandParsed);
+            bPlayer1HandChecked = int.TryParse(Console.ReadLine(), out round.iPlayer1HandParsed);
             if(bPlayer1HandChecked==true)
             {
-                player1Hand = player1HandParsed;
+                player1Hand = round.iPlayer1HandParsed;
                 round.iPlayer1Hand = player1Hand;
             }
             // nb! check on the exceptions here
