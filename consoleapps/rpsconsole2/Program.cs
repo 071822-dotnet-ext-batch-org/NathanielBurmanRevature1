@@ -237,7 +237,7 @@ namespace rpsconsole2
                     game.iLost++;
                 }
                 
-                 // results displayed
+                // results displayed
                 Console.WriteLine($"\n{sPlayer1Name}, {sMsgThis}\nPlayer One: {round.iPlayer1Hand} : {sHand1}\n{game.sAction} \nPlayer Two: {round.iPlayer2Hand} : {sHand2}\nCurrent Round Tally: Wins:{round.iWins} Ties:{round.iTies} Lost:{round.iLost}\nFull Games Won:{game.iWins}\nFull Games Lost: {game.iLost}");
 
                 // reset values to cycle on best of 2 out of three
