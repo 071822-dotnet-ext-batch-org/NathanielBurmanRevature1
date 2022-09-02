@@ -1,0 +1,35 @@
+@media only screen and (max-width: 600px) {
+    body {
+      background-color: lightblue;
+    }
+  }
+
+body{
+    margin-left:100px;
+}
+
+div{
+  color:blue;
+}
+
+span{
+    color:black;
+}
+
+ol{
+    list-style: lower-roman;
+}
+
+.form{
+    width:50%;
+    padding-top:100px;
+}
+
+div.table{
+    width:50%;
+    padding-top:100px;
+}
+
+.img{
+    width: 50%;
+}
