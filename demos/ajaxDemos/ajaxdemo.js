@@ -45,20 +45,20 @@ const xhr2 = new XMLHttpRequest();
 console.log(`The readystate is ${xhr2.readystate}`);
 xhr2.onreadystatechange = () => {
   if (xhr2.readyState == 4 && xhr2.status == 200) {
+    //let iInput = getInput();
     displyJokesInBrowser();
   }
   else {
     console.log(`Jokes are not ready yet!`);
   }
 };
+
 let five = 5;
 
 xhr2.open('GET', `http://api.icndb.com/jokes/random/${five}`, true);
 xhr2.send();
 
 function displyJokesInBrowser() {
-
-  
   const respText = JSON.parse(xhr2.responseText);
   console.log(xhr2.responseText);
   //get the new div element
@@ -66,6 +66,8 @@ function displyJokesInBrowser() {
   for(let x of respText.value){
     myDiv.innerHTML += `<li>${x.joke}</li>`;
   }
+
+
   //convert the JSON string into a JS object
   // let resText = JSON.parse(xhr.responseText);
   //console.log(resText)
