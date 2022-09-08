@@ -88,3 +88,15 @@ class myRobot extends myBody{
 let bender = new myRobot('bender', 30);
 
 console.log(`my robot ${bender.name1} is ${bender.age} years old and lives on ${bender.address}`);
+
+
+
+
+// DOM MANIPULATION
+let pElem = document.getElementsByTagName('p');
+let iCounter = 0;
+for(let x of pElem){
+    ++iCounter;
+    x.innerHTML += ' HELLO';
+    console.log(iCounter);
+}
