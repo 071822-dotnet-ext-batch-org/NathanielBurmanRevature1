@@ -88,3 +88,36 @@ class myRobot extends myBody{
 let bender = new myRobot('bender', 30);
 
 console.log(`my robot ${bender.name1} is ${bender.age} years old and lives on ${bender.address}`);
+
+
+
+
+fetch('data.txt')
+.then((response) => response.text())
+.then((data) => {
+  console.log('Success:', data);
+  let x = document.getElementById('target');
+  x.innerHTML += data;
+})
+.catch((error) => {
+  console.log('Error:', error);
+});
+
+fetch('https://animechan.vercel.app/api/random')
+.then(response => response.json())
+.then(data => {
+    console.log(`anime: ${data.anime},\n character: ${data.character},\n quote: ${data.quote}`);
+    localStorage.setItem('anime', data.anime);
+    localStorage.setItem('character', data.character);
+    localStorage.setItem('quote', data.quote);
+
+    callThis();
+});
+
+let callThis = function(){
+    const sAnime = localStorage.getItem('anime');
+    const sChar  = localStorage.getItem('character');
+    const sQuote = localStorage.getItem('quote');
+    
+    console.log("OUTPUT:"+sAnime, sChar, sQuote);
+}
