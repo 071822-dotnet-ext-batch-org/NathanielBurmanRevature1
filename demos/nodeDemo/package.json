@@ -1,0 +1,12 @@
+{
+  "name": "nathaniel-node-demo",
+  "version": "1.0.0",
+  "description": "testing node demo functions modules",
+  "main": "nodedemo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "testCommand":"echo this\nis\nnode"
+  },
+  "author": "nathaniel",
+  "license": "ISC"
+}
