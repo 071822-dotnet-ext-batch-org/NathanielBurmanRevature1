@@ -20,4 +20,5 @@ const rf = require('./readFile.js');
  */
 
 // provide the name of file to make
-rf.runFile('NextFile');
+let myName = 'NextFile2';
+rf.runFile(myName);
