@@ -1,0 +1,13 @@
+import { myClass } from './myModules/myModule.js';
+var aSquare = {};
+var aStar = {};
+aSquare.color = "red";
+aSquare.shape = "square";
+aSquare.sides = 4;
+aStar.color = "blue";
+aStar.shape = "star";
+aStar.points = 5;
+console.log(aSquare);
+console.log(aStar);
+var myClass1 = new myClass('test');
+console.log(myClass1);
