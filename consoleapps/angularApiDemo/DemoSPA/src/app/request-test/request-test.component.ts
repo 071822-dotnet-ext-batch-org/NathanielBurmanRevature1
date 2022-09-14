@@ -9,6 +9,7 @@ import { CustomRequestService } from '../Services/custom-request.service';
 export class RequestTestComponent implements OnInit {
 
   currentTime: any;
+  todos: any;
 
   constructor(private CR: CustomRequestService) { }
 
@@ -26,4 +27,11 @@ export class RequestTestComponent implements OnInit {
     this.currentTime = null;
   }
 
+  //nb2 updated this next
+  displayTodos(){
+    this.CR.getTodos().subscribe(data => {
+      this.todos = data;
+      this.currentTime = null;
+    })
+  }
 }

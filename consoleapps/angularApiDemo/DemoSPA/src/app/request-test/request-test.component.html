@@ -3,4 +3,13 @@
 <button (click)="displayTime()">Display</button>
 <button (click)="resetTime()">Reset</button>
 
+<!--nb3 updated this next -->
+<button (click)="displayTodos()">Display Todos</button>
+
 <h3 *ngIf="currentTime != null">HELLO {{currentTime}}</h3>
+
+
+
+<ol>
+    <li *ngFor="let todo of todos">{{todo.id}} {{todo.title}} {{todo.userId}} {{todo.completed}}</li>
+</ol>
